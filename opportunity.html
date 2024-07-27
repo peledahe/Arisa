@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Internet Connection Status -->
+  <div class="internet-connection-status" id="internetStatus"></div>
+
+  <!-- Header Area -->
+  <div class="header-area" id="headerArea">
+    <div class="container">
+      <!-- Header Content -->
+      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+        <!-- Logo Wrapper -->
+        <!-- <div class="logo-wrapper">
+          <a href="home.html">
+            <img src="img/core-img/logo-dark.png" alt="">
+          </a>
+        </div> -->
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="javascript:history.back()">
+            <i class="bi bi-arrow-left-short"></i>
+          </a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-heading">
+          <h6 class="mb-0">Atender Solicitud</h6>
+        </div>
+
+        <!-- Navbar Toggler -->
+        <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+          aria-controls="affanOffcanvas">
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- # Sidenav Left -->
+  <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1"
+    aria-labelledby="affanOffcanvsLabel">
+
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas"
+      aria-label="Close"></button>
+
+    <div class="offcanvas-body p-0">
+      <div class="sidenav-wrapper">
+        <!-- Sidenav Profile -->
+        <div class="sidenav-profile bg-gradient">
+          <div class="sidenav-style1"></div>
+
+          <!-- User Thumbnail -->
+          <div class="user-profile">
+            <img src="img/core-img/adulto-m-1.png" alt="">
+          </div>
+
+          <!-- User Info -->
+          <div class="user-info">
+            <h6 class="user-name mb-0">José Alegría</h6>
+            <span>Corredor de Seguros</span>
+          </div>
+        </div>
+
+        <!-- Sidenav Nav -->
+        <ul class="sidenav-nav ps-0">
+          <li>
+            <a href="users.html"><i class="bi bi-person-fill"></i> Usuarios</a>
+          </li>
+          <!-- <li>
+            <a href="routes.html"><i class="bi bi-geo-alt-fill"></i> Rutas</a>
+          </li> -->
+          <li>
+            <a href="notifications.html"><i class="bi bi-bell-fill"></i> Notificaciones
+              <span class="badge bg-danger rounded-pill ms-2">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html"><i class="bi bi-gear-fill"></i> Configuraciones</a>
+          </li>
+          <li>
+            <div class="night-mode-nav">
+              <i class="bi bi-moon"></i> Modo Obscuro
+              <div class="form-check form-switch">
+                <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Basic Modal -->
+  <div class="modal fade" id="bootstrapBasicModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Nuevo Teléfono</h6>
+          <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <label class="form-label" for="exampleInputText">Descripción corta</label>
+            <input class="form-control" id="exampleInputText" type="text" placeholder="Como se conocera este telefono">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="exampleInputtelephone">Teléfono</label>
+            <input class="form-control" id="exampleInputtelephone" type="tel" placeholder="+502 5456 7890">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-sm btn-success" type="button">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Basic Modal -->
+  <div class="modal fade" id="bootstrapBasicModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Nueva Dirección</h6>
+          <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="exampleInputText">Descripción corta</label>
+            <input class="form-control" id="exampleInputText" type="text" placeholder="Como se conocera esta dirección">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">Dirección</span>
+            <textarea class="form-control" aria-label="With textarea" placeholder="Ingrese la dirección completa"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-sm btn-success" type="button">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper py-3">
+
+    <!-- Page Content -->
+
+
+    <!-- User Information-->
+    <div class="container">
+      <!-- Element Heading -->
+      <div class="element-heading">
+        <h6 class="ps-1 py-3">Solicitud No. 21</h6>
+      </div>
+
+      <div class="card user-info-card mb-3">
+        <div class="card-body d-flex align-items-center">
+          <div class="user-profile me-3">
+            <img src="img/core-img/adulto-m-1.png" alt="">
+            <i class="bi bi-pencil"></i>
+            <form action="#">
+              <input class="form-control" type="file">
+            </form>
+          </div>
+          <div class="user-info">
+            <div class="d-flex align-items-center">
+              <h5 class="mb-1">José Carlos Morales</h5>
+            </div>
+            <p class="mb-0">Solicitud de Seguro de Gastos Médicos</p>
+            <span class="badge bg-warning rounded-pill">Cita</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <a class="btn  btn-creative btn-primary" href="#">Polizas</a> -->
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <div class="form-group mb-0">
+            <label class="form-label" for="defaultSelectSm">Polizas</label>
+            <select class="form-select form-select-sm" id="defaultSelectSm" name="defaultSelectSm"
+              aria-label="Default select example">
+              <option value="1" selected>Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+              <option value="2">Opción 4</option>
+              <option value="3">Opción 5</option>
+              <option value="2">Opción 6</option>
+              <option value="3">Opción 7</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <h6 class="modal-title mt-2" id="addnewcontactlabel">Opción 1 <span class="m-1 badge rounded-pill bg-danger">Pre-Autorizado</span></h6>
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <form action="#">
+            <div class="input-group mb-3">
+              <!-- <span class="input-group-text" id="to">Nombre</span> -->
+              <input class="form-control" type="text" placeholder="Nombre Completo" aria-label="Username"
+                aria-describedby="to">
+            </div>
+            <div class="input-group mb-3">
+              <!-- <span class="input-group-text" id="to">Representante Legal</span> -->
+              <input class="form-control" type="text" placeholder="Puesto" aria-label="Username" aria-describedby="to">
+            </div>
+            <div class="input-group mb-3">
+              <!-- <span class="input-group-text" id="to">Telefono</span> -->
+              <input class="form-control" type="text" placeholder="Celular" aria-label="Username" aria-describedby="to">
+            </div>
+            <div class="input-group mb-3">
+              <!-- <span class="input-group-text" id="to">Correo</span> -->
+              <input class="form-control" type="text" placeholder="Correo" aria-label="Username" aria-describedby="to">
+            </div>
+            <!-- <div class="form-group">
+                <label class="form-label" for="message">Dirección</label>
+                <textarea class="form-control" id="message" name="textarea" cols="3" rows="5" placeholder=""></textarea>
+              </div> -->
+            <!-- <div>
+                <button class="btn btn-danger w-25" type="button" data-bs-dismiss="modal" aria-label="Close"><i
+                    class="bi bi-x-lg"></i></button>
+                <button class="btn btn-success w-25" type="submit"><i class="bi bi-check-lg"></i></button>
+              </div> -->
+          </form>
+        </div>
+      </div>
+
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <div class="form-group mt-2">
+            <label class="form-label" for="inputDate">Cita</label>
+            <input class="form-control" id="inputDate" type="date">
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <div class="form-group mb-0">
+            <label class="form-label" for="defaultSelectSm">Teléfonos</label>
+            <div class="input-group mb-3">
+              <select class="form-select form-select-sm" id="defaultSelectSm" name="defaultSelectSm"
+                aria-label="Default select example">
+                <option value="1" selected>2365 2354</option>
+                <option value="2">5665 7656</option>
+                <option value="3">6987 4576</option>
+                <option value="2">2343 8756</option>
+              </select>
+              <span class="input-group-text" id="basic-addon1"  data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal1"><i class="bi bi-pencil-fill"></i></span>
+            </div>
+          </div>
+          <div class="form-group mb-0 mt-2">
+            <label class="form-label" for="defaultSelectSm">Direcciones</label>
+            <div class="input-group mb-3">
+              <select class="form-select form-select-sm" id="defaultSelectSm" name="defaultSelectSm"
+                aria-label="Default select example">
+                <option value="1" selected>Dirección 1</option>
+                <option value="2">Dirección 2</option>
+                <option value="3">Dirección 3</option>
+              </select>
+              <span class="input-group-text" id="basic-addon1"  data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal2"><i class="bi bi-pencil-fill"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <button class="btn btn-danger w-25" type="button" data-bs-dismiss="modal" aria-label="Close"><i
+            class="bi bi-x-lg"></i></button>
+        <button class="btn btn-success w-25" type="submit"><i class="bi bi-check-lg"></i></button>
+      </div>
+
+    </div>
+
+
+
+    <div class="pb-3"></div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+          <li class="active">
+            <a href="user-profile.html">
+              <i class="bi bi-person"></i>
+              <span>Perfil</span>
+            </a>
+          </li>
+
+          <!--  <li>
+           <a href="appointments.html">
+              <i class="bi bi-calendar-event"></i>
+              <span>Citas</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="chat-users.html">
+              <i class="bi bi-chat"></i>
+              <span>Chats</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="home.html">
+              <i class="bi bi-house"></i>
+              <span>Inicio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="metrics.html">
+              <i class="bi bi-bar-chart-line"></i>
+              <span>Metricas</span>
+            </a>
+          </li>
+          </a>
+          </li>
+
+          <li>
+            <a href="queries.html">
+              <i class="bi bi-database-check"></i>
+              <span>Consultas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/slideToggle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/venobox.min.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/rangeslider.min.js"></script>
+  <script src="js/vanilla-dataTables.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+
+</html>

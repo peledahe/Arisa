@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Internet Connection Status -->
+  <div class="internet-connection-status" id="internetStatus"></div>
+
+  <!-- Back Button -->
+  <div class="login-back-button">
+    <a href="otp.html">
+      <i class="bi bi-arrow-left-short"></i>
+    </a>
+  </div>
+
+  <!-- Login Wrapper Area -->
+  <div class="login-wrapper d-flex align-items-center justify-content-center">
+    <div class="custom-container">
+      <div class="text-center">
+        <img class="mx-auto mb-4 d-block" src="img/core-img/logo-mav.png" alt="">
+        <!-- <h3>Verificación de Token</h3> -->
+        <p class="mb-4">Ingrese token de autentificación para ingresar</p>
+      </div>
+
+      <!-- OTP Verify Form -->
+      <div class="otp-verify-form mt-4">
+        <form action="home.html">
+          <div class="input-group mb-3 otp-input-group">
+            <input class="form-control" type="text" value="" placeholder="-" maxlength="1">
+            <input class="form-control" type="text" value="" placeholder="-" maxlength="1">
+            <input class="form-control" type="text" value="" placeholder="-" maxlength="1">
+            <input class="form-control" type="text" value="" placeholder="-" maxlength="1">
+          </div>
+          <button class="btn btn-primary w-100">Confirmar</button>
+        </form>
+      </div>
+
+      <!-- Term & Privacy Info -->
+      <div class="login-meta-data text-center">
+        <p class="mt-3 mb-0">No has recibido el token? <br> <span class="otp-sec" id="resendOTP"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/otp-timer.js"></script>
+  <script src="js/otp-input-switch.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+body{
+  /* background:#fad390; */
+  /* font-family: 'Questrial', sans-serif; */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.calendar{
+  display:inline-grid;
+  justify-content:center;
+  align-items:center;
+  background:#fff;
+  padding:20px;
+  border-radius:5px;
+  box-shadow:0px 40px 30px -20px rgba(0,0,0,0.3);
+  
+  .month{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:20px;
+    margin-bottom:20px;
+    font-weight:300;
+    
+    .year{
+      font-weight:600;
+      margin-left:10px;
+    }
+    
+    .nav{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-decoration:none;
+      color:#0a3d62;
+      width:40px;
+      height:40px;
+      border-radius:40px;
+      transition-duration:.2s;
+      position:relative;
+      
+      &:hover{
+        background:#eee;
+      }
+    }
+  }
+  
+  .days{
+    display: grid;
+    justify-content:center;
+    align-items:center;
+    grid-template-columns: repeat(7, 1fr);
+    color:#999;
+    font-weight:600;
+    margin-bottom:15px;
+    
+    span{
+      width:50px;
+      justify-self:center;
+      align-self:center;
+      text-align:center;
+    }
+  }
+  
+  .dates{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    
+    button{
+      cursor:pointer;
+      outline:0;
+      border:0;
+      background:transparent;
+      font-family: 'Montserrat', sans-serif;
+      font-size:16px;
+      justify-self:center;
+      align-self:center;
+      width:50px;
+      height:50px;
+      border-radius:50px;
+      margin:2px;
+      transition-duration:.2s;
+      
+      &.today{
+        box-shadow:inset 0px 0px 0px 2px #0a3d62;
+      }
+      
+      &:first-child{
+        grid-column:3;
+      }
+      
+      &:hover{
+        background:#eee;
+      }
+      
+      &:focus{
+        background:#0a3d62;
+        color:#fff;
+        font-weight:600;
+      }
+    }
+  }
+}
+  </style>
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Internet Connection Status -->
+  <div class="internet-connection-status" id="internetStatus"></div>
+
+  <!-- Header Area -->
+  <div class="header-area" id="headerArea">
+    <div class="container">
+      <!-- Header Content -->
+      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+        <!-- Logo Wrapper -->
+        <!-- <div class="logo-wrapper">
+          <a href="home.html">
+            <img src="img/core-img/logo-dark.png" alt="">
+          </a>
+        </div> -->
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="javascript:history.back()">
+            <i class="bi bi-arrow-left-short"></i>
+          </a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-heading">
+          <h6 class="mb-0">Citas</h6>
+        </div>
+
+        <!-- Navbar Toggler -->
+        <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+          aria-controls="affanOffcanvas">
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- # Sidenav Left -->
+  <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1"
+    aria-labelledby="affanOffcanvsLabel">
+
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas"
+      aria-label="Close"></button>
+
+    <div class="offcanvas-body p-0">
+      <div class="sidenav-wrapper">
+        <!-- Sidenav Profile -->
+        <div class="sidenav-profile bg-gradient">
+          <div class="sidenav-style1"></div>
+
+          <!-- User Thumbnail -->
+          <div class="user-profile">
+            <img src="img/core-img/adulto-m-1.png" alt="">
+          </div>
+
+          <!-- User Info -->
+          <div class="user-info">
+            <h6 class="user-name mb-0">José Alegría</h6>
+            <span>Corredor de Seguros</span>
+          </div>
+        </div>
+
+        <!-- Sidenav Nav -->
+        <ul class="sidenav-nav ps-0">
+          <li>
+            <a href="users.html"><i class="bi bi-person-fill"></i> Usuarios</a>
+          </li>
+          <!-- <li>
+            <a href="routes.html"><i class="bi bi-geo-alt-fill"></i> Rutas</a>
+          </li> -->
+          <li>
+            <a href="notifications.html"><i class="bi bi-bell-fill"></i> Notificaciones
+              <span class="badge bg-danger rounded-pill ms-2">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html"><i class="bi bi-gear-fill"></i> Configuraciones</a>
+          </li>
+          <li>
+            <div class="night-mode-nav">
+              <i class="bi bi-moon"></i> Modo Obscuro
+              <div class="form-check form-switch">
+                <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper">
+
+    <!-- Page Content -->
+    <div class="calendar">
+      <div class="month"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a><div>January <span class="year">2019</span></div><a href="#" class="nav"><i class="fas fa-angle-right"></i></a></div>
+      <div class="days">
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+        <span>Sun</span>
+      </div>
+      <div class="dates">
+          <button>
+            <time>1</time>
+          </button>
+          <button>
+            <time>2</time>
+          </button>
+          <button>
+            <time>3</time>
+          </button>
+          <button>
+            <time>4</time>
+          </button>
+          <button>
+            <time>5</time>
+          </button>
+          <button>
+            <time>6</time>
+          </button>
+          <button>
+            <time>7</time>
+          </button>
+          <button>
+            <time>8</time>
+          </button>
+          <button>
+            <time>9</time>
+          </button>
+          <button>
+            <time>10</time>
+          </button>
+          <button>
+            <time>11</time>
+          </button>
+          <button>
+            <time>12</time>
+          </button>
+          <button>
+            <time>13</time>
+          </button>
+          <button>
+            <time>14</time>
+          </button>
+          <button>
+            <time>15</time>
+          </button>
+          <button>
+            <time>16</time>
+          </button>
+          <button>
+            <time>17</time>
+          </button>
+          <button class="today">
+            <time>18</time>
+          </button>
+          <button>
+            <time>19</time>
+          </button>
+          <button>
+            <time>20</time>
+          </button>
+          <button>
+            <time>21</time>
+          </button>
+          <button>
+            <time>22</time>
+          </button>
+          <button>
+            <time>23</time>
+          </button>
+          <button>
+            <time>24</time>
+          </button>
+          <button>
+            <time>25</time>
+          </button>
+          <button>
+            <time>26</time>
+          </button>
+          <button>
+            <time>27</time>
+          </button>
+          <button>
+            <time>28</time>
+          </button>
+          <button>
+            <time>29</time>
+          </button>
+          <button>
+            <time>30</time>
+          </button>
+          <button>
+            <time>31</time>
+          </button>
+      </div>
+    </div>
+
+    <div class="pb-3"></div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+          <li class="active">
+            <a href="user-profile.html">
+              <i class="bi bi-person"></i>
+              <span>Perfil</span>
+            </a>
+          </li>
+
+          <!--  <li>
+           <a href="appointments.html">
+              <i class="bi bi-calendar-event"></i>
+              <span>Citas</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="chat-users.html">
+              <i class="bi bi-chat"></i>
+              <span>Chats</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="home.html">
+              <i class="bi bi-house"></i>
+              <span>Inicio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="metrics.html">
+              <i class="bi bi-bar-chart-line"></i>
+              <span>Metricas</span>
+            </a>
+          </li>
+            </a>
+          </li>
+
+          <li>
+            <a href="queries.html">
+              <i class="bi bi-database-check"></i>
+              <span>Consultas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/slideToggle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/venobox.min.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/rangeslider.min.js"></script>
+  <script src="js/vanilla-dataTables.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+
+</html>

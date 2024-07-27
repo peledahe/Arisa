@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html id="previewPage" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Dark mode switching -->
+  <div class="dark-mode-switching">
+    <div class="d-flex w-100 h-100 align-items-center justify-content-center">
+      <div class="dark-mode-text text-center">
+        <i class="bi bi-moon"></i>
+        <p class="mb-0">Cambiar al modo oscuro</p>
+      </div>
+      <div class="light-mode-text text-center">
+        <i class="bi bi-brightness-high"></i>
+        <p class="mb-0">Cambiar al modo claro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RTL mode switching -->
+  <div class="rtl-mode-switching">
+    <div class="d-flex w-100 h-100 align-items-center justify-content-center">
+      <div class="rtl-mode-text text-center">
+        <i class="bi bi-text-right"></i>
+        <p class="mb-0">Cambiar al modo RTL</p>
+      </div>
+      <div class="ltr-mode-text text-center">
+        <i class="bi bi-text-left"></i>
+        <p class="mb-0">Cambiar al modo predeterminado</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Setting Popup Overlay -->
+  <div id="setting-popup-overlay"></div>
+
+  <!-- Setting Popup Card -->
+  <div class="card setting-popup-card shadow-lg" id="settingCard">
+    <div class="card-body">
+      <div class="container">
+        <div class="setting-heading d-flex align-items-center justify-content-between mb-3">
+          <p class="mb-0">Configuración</p>
+          <div class="btn-close" id="settingCardClose"></div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="availabilityStatus" checked>
+            <label class="form-check-label" for="availabilityStatus">Estado disponible</label>
+          </div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="sendMeNotifications" checked>
+            <label class="form-check-label" for="sendMeNotifications">Enviarme notificaciones</label>
+          </div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="darkSwitch">
+            <label class="form-check-label" for="darkSwitch">Modo oscuro</label>
+          </div>
+        </div>
+
+        <!-- <div class="single-setting-panel">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="rtlSwitch">
+            <label class="form-check-label" for="rtlSwitch">Modo RTL</label>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-iframe-wrapper">
+    <!-- Header Area -->
+    <div class="demo-header-wrapper">
+      <div class="container demo-container">
+        <!-- Header Content -->
+        <div
+          class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+          <!-- Logo Wrapper -->
+          <div class="logo-wrapper">
+            <a href="home.html">
+              <img src="img/core-img/logo.png" alt="">
+            </a>
+          </div>
+
+          <!-- Settings -->
+          <div class="setting-wrapper">
+            <div class="setting-trigger-btn" id="settingTriggerBtn">
+              <i class="bi bi-gear"></i>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Hero Area -->
+    <div class="preview-hero-area">
+      <span class="big-shadow-text">Genco</span>
+      <div class="container demo-container direction-rtl">
+        <div class="row g-2 align-items-center justify-content-between">
+          <div class="col-12 col-lg-3">
+            
+            <img src="img/core-img/bi/logo.png" alt="" class="mb-5">
+            <h2 class="demo-title mb-3">Corredor Virtual</h2>
+            <h6 class="version-number bg-white shadow-sm border d-inline-block px-3 py-2 rounded-pill mb-3 lh-1">Version - v1.0.0</h6>
+
+            <!-- <ul class="demo-desc ps-0 mb-5">
+              <li><i class="bi bi-check-lg"></i> PWA Ready</li>
+              <li><i class="bi bi-check-lg"></i> Vanilla JavaScript</li>
+              <li><i class="bi bi-check-lg"></i> Bootstrap 5.2.3</li>
+              <li><i class="bi bi-check-lg"></i> Creative Design</li>
+              <li><i class="bi bi-check-lg"></i> Dark Mode</li>
+              <li><i class="bi bi-check-lg"></i> Right to Left (RTL)</li>
+            </ul> -->
+
+          </div>
+
+          <div class="col-12 col-lg-5">
+            <div class="text-center">
+              <iframe class="shadow-lg" src="hero-blocks.html"></iframe>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-3">
+            <div class="text-lg-end">
+              <!-- Mobile Live Preview -->
+              <div class="live-preview-btn mb-3">
+                <a class="btn btn-primary btn-lg d-lg-none mb-5 rounded-pill" href="hero-blocks.html" target="_blank">
+                  Haga clic en el botón para obtener una vista previa en vivo
+                </a>
+              </div>
+
+              <!-- QR Code -->
+              <div class="qr-code-wrapper shadow border">
+                <img src="img/demo-img/qr-code.png" alt="">
+                <h6 class="mb-0">Escanea este código QR para <br> verlo en tu dispositivo móvil.</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Area -->
+    <div class="preview-footer-area py-4">
+      <div class="container demo-container direction-rtl h-100 d-flex align-items-center justify-content-between">
+        <p class="mb-0"><span id="copyrightYear"></span> &copy; Hecho por Genco</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/slideToggle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/venobox.min.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+
+  <script>
+    if (document.querySelectorAll('.promotionVideo').length > 0) {
+      window.addEventListener('load', function () {
+        new VenoBox({
+          selector: '.promo-video',
+          popup: true,
+          overlayColor: 'rgba(15,7,15,0.75)',
+          spinner: 'pulse',
+          navSpeed: 400
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

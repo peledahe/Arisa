@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Arisa - Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Internet Connection Status -->
+  <div class="internet-connection-status" id="internetStatus"></div>
+
+  <!-- Header Area -->
+  <div class="header-area" id="headerArea">
+    <div class="container">
+      <!-- Header Content -->
+      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+        <!-- Logo Wrapper -->
+        <!-- <div class="logo-wrapper">
+          <a href="home.html">
+            <img src="img/core-img/logo-dark.png" alt="">
+          </a>
+        </div> -->
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="javascript:history.back()">
+            <i class="bi bi-arrow-left-short"></i>
+          </a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-heading">
+          <h6 class="mb-0">Rutas</h6>
+        </div>
+
+        <!-- Navbar Toggler -->
+        <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+          aria-controls="affanOffcanvas">
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- # Sidenav Left -->
+  <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1"
+    aria-labelledby="affanOffcanvsLabel">
+
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas"
+      aria-label="Close"></button>
+
+    <div class="offcanvas-body p-0">
+      <div class="sidenav-wrapper">
+        <!-- Sidenav Profile -->
+        <div class="sidenav-profile bg-gradient">
+          <div class="sidenav-style1"></div>
+
+          <!-- User Thumbnail -->
+          <div class="user-profile">
+            <img src="img/core-img/adulto-m-1.png" alt="">
+          </div>
+
+          <!-- User Info -->
+          <div class="user-info">
+            <h6 class="user-name mb-0">José Alegría</h6>
+            <span>Corredor de Seguros</span>
+          </div>
+        </div>
+
+        <!-- Sidenav Nav -->
+        <ul class="sidenav-nav ps-0">
+          <li>
+            <a href="users.html"><i class="bi bi-person-fill"></i> Usuarios</a>
+          </li>
+          <!-- <li>
+            <a href="routes.html"><i class="bi bi-geo-alt-fill"></i> Rutas</a>
+          </li> -->
+          <li>
+            <a href="notifications.html"><i class="bi bi-bell-fill"></i> Notificaciones
+              <span class="badge bg-danger rounded-pill ms-2">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html"><i class="bi bi-gear-fill"></i> Configuraciones</a>
+          </li>
+          <li>
+            <div class="night-mode-nav">
+              <i class="bi bi-moon"></i> Modo Obscuro
+              <div class="form-check form-switch">
+                <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper py-3">
+    <div class="container mb-3">
+      <!-- Google Maps -->
+      <div class="card">
+        <div class="mapa" style="padding: 0.2rem;">
+          <div class="google-maps">
+            <div class="d-flex justify-content-between align-items-center m-3">
+              <h5 class="mb-0">Ruta 1 </h5>
+              <div>
+                <i class="bi bi-star-fill" style="color: darkorange; margin-right: 5px;"></i>
+                <button type="button" class="btn btn-primary btn-redondo"><i class="bi bi-geo-alt-fill"></i></button>
+                <button type="button" class="btn btn-info btn-redondo"><i class="bi bi-clock"></i></button>
+                <button type="button" class="btn btn-secondary btn-redondo mr-3"><i class="bi bi-calendar-week"></i></button>
+              </div>
+            </div>
+            <iframe class="w-100" style="height: 300px;"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37902.096510377676!2d101.6393079588335!3d3.103387873464772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49c701efeae7%3A0xf4d98e5b2f1c287d!2sKuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2sbd!4v1591684973931!5m2!1sen!2sbd"
+              allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Google Maps -->
+      <div class="card">
+        <div class="mapa" style="padding: 0.2rem;">
+          <div class="google-maps">
+            <div class="d-flex justify-content-between align-items-center m-3">
+              <h5 class="mb-0">Ruta 2</h5>
+              <div>
+                <button type="button" class="btn btn-primary btn-redondo"><i class="bi bi-geo-alt-fill"></i></button>
+                <button type="button" class="btn btn-info btn-redondo"><i class="bi bi-clock"></i></button>
+                <button type="button" class="btn btn-secondary btn-redondo mr-3"><i class="bi bi-calendar-week"></i></button>
+              </div>
+            </div>
+            <div id="map"></div>
+            <iframe class="w-100" style="height: 300px;"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37902.096510377676!2d101.6393079588335!3d3.103387873464772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49c701efeae7%3A0xf4d98e5b2f1c287d!2sKuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2sbd!4v1591684973931!5m2!1sen!2sbd"
+              allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+          <li class="active">
+            <a href="user-profile.html">
+              <i class="bi bi-person"></i>
+              <span>Perfil</span>
+            </a>
+          </li>
+
+          <!--  <li>
+           <a href="appointments.html">
+              <i class="bi bi-calendar-event"></i>
+              <span>Citas</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="chat-users.html">
+              <i class="bi bi-chat"></i>
+              <span>Chats</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="home.html">
+              <i class="bi bi-house"></i>
+              <span>Inicio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="metrics.html">
+              <i class="bi bi-bar-chart-line"></i>
+              <span>Metricas</span>
+            </a>
+          </li>
+            </a>
+          </li>
+
+          <li>
+            <a href="queries.html">
+              <i class="bi bi-database-check"></i>
+              <span>Consultas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/slideToggle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/venobox.min.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/rangeslider.min.js"></script>
+  <script src="js/vanilla-dataTables.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+
+  <script>
+    function initMap() {
+      const origin = { lat: 40.7128, lng: -74.0060 }; // Coordenadas del punto de inicio
+      const destination = { lat: 34.0522, lng: -118.2437 }; // Coordenadas del punto de destino
+  
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: origin,
+        zoom: 10,
+      });
+  
+      const directionsService = new google.maps.DirectionsService();
+      const directionsRenderer = new google.maps.DirectionsRenderer({ map });
+  
+      const request = {
+        origin,
+        destination,
+        travelMode: google.maps.TravelMode.DRIVING, // Puedes cambiar el modo de transporte
+      };
+  
+      directionsService.route(request, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          directionsRenderer.setDirections(result);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

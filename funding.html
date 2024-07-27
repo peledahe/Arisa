@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Internet Connection Status -->
+  <div class="internet-connection-status" id="internetStatus"></div>
+
+  <!-- Header Area -->
+  <div class="header-area" id="headerArea">
+    <div class="container">
+      <!-- Header Content -->
+      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+        <!-- Logo Wrapper -->
+        <!-- <div class="logo-wrapper">
+          <a href="home.html">
+            <img src="img/core-img/logo-dark.png" alt="">
+          </a>
+        </div> -->
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="javascript:history.back()">
+            <i class="bi bi-arrow-left-short"></i>
+          </a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-heading">
+          <h6 class="mb-0">Gestión de Fondos</h6>
+        </div>
+
+        <!-- Navbar Toggler -->
+        <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+          aria-controls="affanOffcanvas">
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- # Sidenav Left -->
+  <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1"
+    aria-labelledby="affanOffcanvsLabel">
+
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas"
+      aria-label="Close"></button>
+
+    <div class="offcanvas-body p-0">
+      <div class="sidenav-wrapper">
+        <!-- Sidenav Profile -->
+        <div class="sidenav-profile bg-gradient">
+          <div class="sidenav-style1"></div>
+
+          <!-- User Thumbnail -->
+          <div class="user-profile">
+            <img src="img/core-img/adulto-m-1.png" alt="">
+          </div>
+
+          <!-- User Info -->
+          <div class="user-info">
+            <h6 class="user-name mb-0">José Alegría</h6>
+            <span>Corredor de Seguros</span>
+          </div>
+        </div>
+
+        <!-- Sidenav Nav -->
+        <ul class="sidenav-nav ps-0">
+          <li>
+            <a href="users.html"><i class="bi bi-person-fill"></i> Usuarios</a>
+          </li>
+          <!-- <li>
+            <a href="routes.html"><i class="bi bi-geo-alt-fill"></i> Rutas</a>
+          </li> -->
+          <li>
+            <a href="notifications.html"><i class="bi bi-bell-fill"></i> Notificaciones
+              <span class="badge bg-danger rounded-pill ms-2">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html"><i class="bi bi-gear-fill"></i> Configuraciones</a>
+          </li>
+          <li>
+            <div class="night-mode-nav">
+              <i class="bi bi-moon"></i> Modo Obscuro
+              <div class="form-check form-switch">
+                <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper py-3">
+
+    <!-- Bootstrap Basic Modal -->
+  <div class="modal fade" id="bootstrapBasicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Actualización de datos</h6>
+          <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Puesto:</label>
+              <input type="text" class="form-control" id="recipient-position">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Celular:</label>
+              <input type="tel" class="form-control" id="recipient-phone">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Correo:</label>
+              <input type="email" class="form-control" id="recipient-email">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Nit:</label>
+              <input type="tel" class="form-control" id="recipient-phone">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-sm btn-success" type="button">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="card">
+        <!-- <div class="card-body"> -->
+          <div class="standard-tab">
+            <ul class="nav rounded-lg mb-2 p-2 shadow-sm" id="affanTabs1" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="btn active" id="bootstrap-tab" data-bs-toggle="tab" data-bs-target="#bootstrap"
+                  type="button" role="tab" aria-controls="bootstrap" aria-selected="true">Todos</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="btn" id="pwa-tab" data-bs-toggle="tab" data-bs-target="#pwa" type="button" role="tab"
+                  aria-controls="pwa" aria-selected="false">Línea Vida</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="btn" id="dark-tab" data-bs-toggle="tab" data-bs-target="#dark" type="button" role="tab"
+                  aria-controls="dark" aria-selected="false">Línea Daños</button>
+              </li>
+            </ul>
+
+            <div class="tab-content rounded-lg p-3 shadow-sm" id="affanTabs1Content">
+              <div class="tab-pane fade show active" id="bootstrap" role="tabpanel" aria-labelledby="bootstrap-tab">
+                <h6>Toda la Cartera</h6>
+                <!-- <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p> -->
+                <div class="accordion accordion-style-five" id="accordionStyle5">
+
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-info">
+                    <div class="accordion-header" id="accordionFive1">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive1" aria-expanded="true" aria-controls="accordionStyleFive1">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-info">Línea Daños</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive1" aria-labelledby="accordionFive1" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-warning">
+                    <div class="accordion-header" id="accordionFive2">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive2" aria-expanded="true" aria-controls="accordionStyleFive2">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-warning">Línea Vida</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive2" aria-labelledby="accordionFive2" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-warning">
+                    <div class="accordion-header" id="accordionFive3">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive3" aria-expanded="true" aria-controls="accordionStyleFive3">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-warning">Línea Vida</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive3" aria-labelledby="accordionFive3" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-info">
+                    <div class="accordion-header" id="accordionFive4">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive4" aria-expanded="true" aria-controls="accordionStyleFive4">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-info">Línea Daños</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive4" aria-labelledby="accordionFive4" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-warning">
+                    <div class="accordion-header" id="accordionFive5">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive5"
+                        aria-expanded="false" aria-controls="accordionStyleFive5">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-warning">Línea Vida</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-collapse collapse" id="accordionStyleFive5" aria-labelledby="accordionFive5"
+                      data-bs-parent="#accordionStyle5">
+                      <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                      <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                      <p class="mb-0 mt-2">Contacto: 
+                        <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                        <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                      </p>
+                      <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                      <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pwa" role="tabpanel" aria-labelledby="pwa-tab">
+                <h6>Cartera de Línea Vida</h6>
+                <!-- <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p> -->
+                <div class="accordion accordion-style-five" id="accordionStyle5">
+
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-warning">
+                    <div class="accordion-header" id="accordionFive6">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive6" aria-expanded="true" aria-controls="accordionStyleFive6">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-warning">Línea Vida</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive6" aria-labelledby="accordionFive6" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-warning">
+                    <div class="accordion-header" id="accordionFive7">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive7" aria-expanded="true" aria-controls="accordionStyleFive7">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-warning">Línea Vida</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive7" aria-labelledby="accordionFive7" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-warning">
+                    <div class="accordion-header" id="accordionFive8">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive8" aria-expanded="true" aria-controls="accordionStyleFive8">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-warning">Línea Vida</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive8" aria-labelledby="accordionFive8" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="dark" role="tabpanel" aria-labelledby="dark-tab">
+                <h6>Cartera de Línea Daños</h6>
+                <!-- <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p> -->
+                <div class="accordion accordion-style-five" id="accordionStyle5">
+
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-info">
+                    <div class="accordion-header" id="accordionFive9">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive9" aria-expanded="true" aria-controls="accordionStyleFive9">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-info">Línea Daños</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive9" aria-labelledby="accordionFive9" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Single Accordion -->
+                  <div class="accordion-item accordion-bg-info">
+                    <div class="accordion-header" id="accordionFive0">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#accordionStyleFive0" aria-expanded="true" aria-controls="accordionStyleFive0">
+                        <div class="d-flex justify-content-between">
+                          <span>CIF: 174741859</span>
+                          <span class="d-flex align-items-center">
+                            <span class="badge bg-info">Línea Daños</span>
+                            <!-- <i class="bi bi-plus-lg ms-2"></i> -->
+                          </span>
+                        </div>
+                        <div>
+                          Hermanos y Asociados, S. A.
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <span>NIT: 106467670</span>
+                          <span>Q 144,111.00</span>
+                        </div>
+                      </div>
+                      <div class="accordion-collapse collapse" id="accordionStyleFive0" aria-labelledby="accordionFive0" data-bs-parent="#accordionStyle5">
+                        <p class="mb-0 mt-2">Concesión 17/11/2022</p>
+                        <p class="mb-0 mt-2">Vencimiento 17/11/2025</p>
+                        <p class="mb-0 mt-2">Contacto: 
+                          <b>Luis Pérez Morales</b> / 
+                          Representante Legal<br>
+                          <a href="tel:+50212345678">1234-5678</a> - <a href="mailto:alfa@email.com">alfa@email.com</a><br>
+                        </p>
+                        <p class="mb-0 mt-2">Ult. Fech. Act. 11/12/2023</p>
+                        <a class="btn w-50 mt-1 mb-1  btn-sm btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#bootstrapBasicModal" >Actualizar contacto</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="pb-3"></div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+          <li class="active">
+            <a href="user-profile.html">
+              <i class="bi bi-person"></i>
+              <span>Perfil</span>
+            </a>
+          </li>
+
+          <!--  <li>
+           <a href="appointments.html">
+              <i class="bi bi-calendar-event"></i>
+              <span>Citas</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="chat-users.html">
+              <i class="bi bi-chat"></i>
+              <span>Chats</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="home.html">
+              <i class="bi bi-house"></i>
+              <span>Inicio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="metrics.html">
+              <i class="bi bi-bar-chart-line"></i>
+              <span>Metricas</span>
+            </a>
+          </li>
+            </a>
+          </li>
+          
+          <li>
+            <a href="queries.html">
+              <i class="bi bi-database-check"></i>
+              <span>Consultas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/slideToggle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/venobox.min.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/rangeslider.min.js"></script>
+  <script src="js/vanilla-dataTables.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+
+</html>

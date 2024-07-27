@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Disable cache -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Wed, 11 Jan 1984 05:00:00 GMT">
+  <!-- End Disable cache -->
+  <meta name="description" content="Arisa - Corredor Virtual">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#1D4289">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Corredor Virtual</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Internet Connection Status -->
+  <div class="internet-connection-status" id="internetStatus"></div>
+
+  <!-- Header Area -->
+  <div class="header-area" id="headerArea">
+    <div class="container">
+      <!-- Header Content -->
+      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+        <!-- Logo Wrapper -->
+        <!-- <div class="logo-wrapper">
+          <a href="home.html">
+            <img src="img/core-img/logo-dark.png" alt="">
+          </a>
+        </div> -->
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="javascript:history.back()">
+            <i class="bi bi-arrow-left-short"></i>
+          </a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-heading">
+          <h6 class="mb-0">Chats</h6>
+        </div>
+
+        <!-- Navbar Toggler -->
+        <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+          aria-controls="affanOffcanvas">
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+          <span class="d-block"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- # Sidenav Left -->
+  <div class="offcanvas offcanvas-start" id="affanOffcanvas" data-bs-scroll="true" tabindex="-1"
+    aria-labelledby="affanOffcanvsLabel">
+
+    <button class="btn-close btn-close-white text-reset" type="button" data-bs-dismiss="offcanvas"
+      aria-label="Close"></button>
+
+    <div class="offcanvas-body p-0">
+      <div class="sidenav-wrapper">
+        <!-- Sidenav Profile -->
+        <div class="sidenav-profile bg-gradient">
+          <div class="sidenav-style1"></div>
+
+          <!-- User Thumbnail -->
+          <div class="user-profile">
+            <img src="img/core-img/adulto-m-1.png" alt="">
+          </div>
+
+          <!-- User Info -->
+          <div class="user-info">
+            <h6 class="user-name mb-0">José Alegría</h6>
+            <span>Corredor de Seguros</span>
+          </div>
+        </div>
+
+        <!-- Sidenav Nav -->
+        <ul class="sidenav-nav ps-0">
+          <li>
+            <a href="users.html"><i class="bi bi-person-fill"></i> Usuarios</a>
+          </li>
+          <!-- <li>
+            <a href="routes.html"><i class="bi bi-geo-alt-fill"></i> Rutas</a>
+          </li> -->
+          <li>
+            <a href="notifications.html"><i class="bi bi-bell-fill"></i> Notificaciones
+              <span class="badge bg-danger rounded-pill ms-2">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html"><i class="bi bi-gear-fill"></i> Configuraciones</a>
+          </li>
+          <li>
+            <div class="night-mode-nav">
+              <i class="bi bi-moon"></i> Modo Obscuro
+              <div class="form-check form-switch">
+                <input class="form-check-input form-check-success" id="darkSwitch" type="checkbox">
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Add new contact modal -->
+  <div class="add-new-contact-modal modal fade px-0" id="addnewcontact" data-bs-backdrop="static"
+    data-bs-keyboard="false" tabindex="-1" aria-labelledby="addnewcontactlabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body p-4">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="modal-title" id="addnewcontactlabel">Nuevo mensaje</h6>
+            <button class="btn btn-close p-1 ms-auto me-0" type="button" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+
+          <form action="#">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="to">Para</span>
+              <input class="form-control" type="text" placeholder="" aria-label="Username" aria-describedby="to" value="Francisco Céspedes">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Mensaje</label>
+              <textarea class="form-control" id="message" name="textarea" cols="3" rows="5" placeholder=""></textarea>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper py-3">
+    <!-- Add New Contact -->
+    <!-- <div class="add-new-contact-wrap">
+      <a class="shadow" href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+        <i class="bi bi-plus-lg"></i>
+      </a>
+    </div> -->
+
+    <div class="container">
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <div class="chat-search-box">
+            <!-- Search Form -->
+            <form action="#">
+              <div class="input-group">
+                <span class="input-group-text" id="searchbox">
+                  <i class="bi bi-search"></i>
+                </span>
+                <input class="form-control" type="search" placeholder="Buscar usuarios o mensajes"
+                  aria-describedby="searchbox">
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- User Status Slide -->
+      <div class="chat-user-status-slides-wrapper">
+        <div class="chat-user-status-slides mb-2">
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/core-img/adulto-m-1.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Pablo Morales</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user2.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Pedro López</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user3.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">María Almengor</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide offline">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user4.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Francisco Pérez</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/core-img/adulto-f-1.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Paola Jiménez</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide offline">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user2.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Hugo Moran</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/core-img/adulto-f-1.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Elizabeth Juárez</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user2.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Ana Moreira</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user3.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Azucena Lainez</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide offline">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user4.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Renato Cortéz</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/core-img/adulto-m-1.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Juan Méndez</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Single Slide -->
+          <div>
+            <div class="user-status-slide offline">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#addnewcontact">
+                <img src="img/bg-img/user2.png" alt="">
+                <div class="active-status"></div>
+                <p class="mb-0 mt-1 text-truncate">Harry Fritz</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Element Heading -->
+      <div class="element-heading">
+        <h6 class="ps-1">Contactos recientes</h6>
+      </div>
+
+      <!-- Chat User List -->
+      <ul class="ps-0 chat-user-list">
+
+        <!-- Single Chat User -->
+        <li class="p-3 chat-unread">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/core-img/adulto-m-1.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Hugo Moran</h6>
+              <div class="last-chat">
+                <p class="mb-0 text-truncate">¿Hola, estás ahí?
+                  <span class="badge rounded-pill bg-primary">2</span>
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/bg-img/user2.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Juan Méndez</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">¿Cómo puedo ayudarle?</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3 offline">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/bg-img/user3.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Renato Cortéz</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">Quiero contratar un seguro de vida.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/bg-img/user4.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Azucena Lainez</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">Su contrato estará listo el día de mañana.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="#" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">María Almengor</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">Lo menos que puedo hacer es llamarle temprano.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3 offline">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/core-img/adulto-m-1.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Harry Fritz</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">¿Podría proporcionar un enlace de compra?</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/core-img/adulto-f-1.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Paola Jiménez</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">Claro, aquí está el enlace de compra. Haga clic en el botón comprar ahora,
+                  A continuación, rellena toda tu información de pago.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Single Chat User -->
+        <li class="p-3 offline">
+          <a class="d-flex" href="chat.html">
+            <!-- Thumbnail -->
+            <div class="chat-user-thumbnail me-3 shadow">
+              <img class="img-circle" src="img/bg-img/user3.png" alt="">
+              <span class="active-status"></span>
+            </div>
+            <!-- Info -->
+            <div class="chat-user-info">
+              <h6 class="text-truncate mb-0">Francisco Pérez</h6>
+              <div class="last-chat">
+                <p class="text-truncate mb-0">De nada.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Options -->
+          <div class="dropstart chat-options-btn">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="bi bi-mic-mute"></i>Silenciar</a></li>
+              <li><a href="#"><i class="bi bi-slash-circle"></i>Finalizar</a></li>
+              <li><a href="#"><i class="bi bi-trash"></i>Eliminar</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+          <li class="active">
+            <a href="user-profile.html">
+              <i class="bi bi-person"></i>
+              <span>Perfil</span>
+            </a>
+          </li>
+
+          <!--  <li>
+           <a href="appointments.html">
+              <i class="bi bi-calendar-event"></i>
+              <span>Citas</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="chat-users.html">
+              <i class="bi bi-chat"></i>
+              <span>Chats</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="home.html">
+              <i class="bi bi-house"></i>
+              <span>Inicio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="metrics.html">
+              <i class="bi bi-bar-chart-line"></i>
+              <span>Metricas</span>
+            </a>
+          </li>
+            </a>
+          </li>
+
+          <li>
+            <a href="queries.html">
+              <i class="bi bi-database-check"></i>
+              <span>Consultas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/slideToggle.min.js"></script>
+  <script src="js/internet-status.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/venobox.min.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/rangeslider.min.js"></script>
+  <script src="js/vanilla-dataTables.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/dark-rtl.js"></script>
+  <script src="js/active.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+
+</html>
