@@ -370,8 +370,8 @@ caption,
 
 .btn-info {
   color: #ffffff;
-  background-color: #19BFD1;
-  border-color: #19BFD1;
+  background-color: #19BFD2;
+  border-color: #19BFD2;
 }
 
 .btn-info:hover {
@@ -400,8 +400,8 @@ caption,
 .btn-info:disabled,
 .btn-info.disabled {
   color: #ffffff;
-  background-color: #19BFD1;
-  border-color: #19BFD1;
+  background-color: #19BFD2;
+  border-color: #19BFD2;
 }
 
 .btn-warning {
@@ -612,14 +612,14 @@ caption,
 }
 
 .btn-outline-info {
-  color: #19BFD1;
-  border-color: #19BFD1;
+  color: #19BFD2;
+  border-color: #19BFD2;
 }
 
 .btn-outline-info:hover {
   color: #ffffff;
-  background-color: #19BFD1;
-  border-color: #19BFD1;
+  background-color: #19BFD2;
+  border-color: #19BFD2;
 }
 
 .btn-check:checked + .btn-outline-info,
@@ -628,13 +628,13 @@ caption,
 .btn-outline-info.active,
 .btn-outline-info.dropdown-toggle.show {
   color: #ffffff;
-  background-color: #19BFD1;
-  border-color: #19BFD1;
+  background-color: #19BFD2;
+  border-color: #19BFD2;
 }
 
 .btn-outline-info:disabled,
 .btn-outline-info.disabled {
-  color: #19BFD1;
+  color: #19BFD2;
 }
 
 .btn-outline-warning {
@@ -888,7 +888,7 @@ caption,
 }
 
 .link-info {
-  color: #19BFD1;
+  color: #19BFD2;
 }
 
 .link-info:hover,
@@ -965,7 +965,7 @@ caption,
 }
 
 .border-info {
-  border-color: #19BFD1 !important;
+  border-color: #19BFD2 !important;
 }
 
 .border-warning {
@@ -997,7 +997,7 @@ caption,
 }
 
 .text-info {
-  color: #19BFD1 !important;
+  color: #19BFD2 !important;
 }
 
 .text-warning {
@@ -1037,7 +1037,7 @@ caption,
 }
 
 .bg-info {
-  background-color: #19BFD1 !important;
+  background-color: #19BFD2 !important;
 }
 
 .bg-warning {
@@ -3423,11 +3423,11 @@ a.affan-element-item i {
   background-color: #EFBF45;
 }
 .custom-alert-1.alert-info {
-  color: #19BFD1;
+  color: #19BFD2;
   background-color: transparent;
 }
 .custom-alert-1.alert-info::after {
-  background-color: #19BFD1;
+  background-color: #19BFD2;
 }
 .custom-alert-1.alert-light {
   color: #8480ae;
@@ -3482,7 +3482,7 @@ a.affan-element-item i {
   background-color: #EFBF45;
 }
 .custom-alert-2.alert-info {
-  background-color: #19BFD1;
+  background-color: #19BFD2;
 }
 .custom-alert-2.alert-light {
   color: #8480ae;
@@ -3574,7 +3574,7 @@ a.affan-element-item i {
   background-color: #EFBF45;
 }
 .divider.divider-center-icon.border-info i {
-  background-color: #19BFD1;
+  background-color: #19BFD2;
 }
 .divider.divider-center-icon.border-light i {
   background-color: #f1f2fb;
@@ -4888,8 +4888,8 @@ a.affan-element-item i {
 }
 
 .form-check-input.form-check-info:checked {
-  background-color: #19BFD1;
-  border-color: #19BFD1;
+  background-color: #19BFD2;
+  border-color: #19BFD2;
 }
 
 .form-check-input.form-check-secondary:checked {
@@ -5505,10 +5505,10 @@ form .btn-lg {
   background-color: #EFBF45;
 }
 .circle-spinner.circle-spinner-info .circle {
-  background-color: #19BFD1;
+  background-color: #19BFD2;
 }
 .circle-spinner.circle-spinner-info .circle::after {
-  background-color: #19BFD1;
+  background-color: #19BFD2;
 }
 .circle-spinner.circle-spinner-light .circle {
   background-color: #f1f2fb;
@@ -6531,15 +6531,15 @@ form .btn-lg {
   background-color: #EFBF45;
 }
 .timeline-card.bg-info {
-  border-left-color: #19BFD1 !important;
+  border-left-color: #19BFD2 !important;
   background-color: #ffffff !important;
 }
 .timeline-card.bg-info .timeline-icon svg,
 .timeline-card.bg-info .timeline-icon i {
-  color: #19BFD1;
+  color: #19BFD2;
 }
 .timeline-card.bg-info .timeline-text .badge {
-  background-color: #19BFD1;
+  background-color: #19BFD2;
 }
 .timeline-card.bg-dark {
   border-left-color: #061238 !important;
@@ -6623,7 +6623,7 @@ form .btn-lg {
 }
 
 .toast-info {
-  background-color: #19BFD1 !important;
+  background-color: #19BFD2 !important;
   color: #ffffff;
 }
 
@@ -8255,7 +8255,7 @@ form .btn-lg {
 }
 [data-theme=dark] body .preview-iframe-wrapper .features-area .card.active {
   border-color: transparent !important;
-  background-color: #19BFD1 !important;
+  background-color: #19BFD2 !important;
 }
 [data-theme=dark] body .preview-iframe-wrapper .features-area .card.active h6 {
   color: #ffffff;
